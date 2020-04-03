@@ -10,41 +10,13 @@ import UIKit
 
 class TodoListViewController: UITableViewController {
     
-    let defaults = UserDefaults.standard
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("TableCells.plist")
 
-    var itemArray = [
-        TableCell(title: "Find Mike"),
-        TableCell(title: "Check"),
-        TableCell(title: "Uo Mike", done: true),
-        TableCell(title: "Suop"),
-        TableCell(title: "Find Mike"),
-        TableCell(title: "Check"),
-        TableCell(title: "Uo Mike", done: true),
-        TableCell(title: "Suop"),
-        TableCell(title: "Find Mike"),
-        TableCell(title: "Check"),
-        TableCell(title: "Uo Mike", done: true),
-        TableCell(title: "Suop"),
-        TableCell(title: "Find Mike"),
-        TableCell(title: "Check"),
-        TableCell(title: "Uo Mike", done: true),
-        TableCell(title: "Suop"),
-        TableCell(title: "Find Mike"),
-        TableCell(title: "Check"),
-        TableCell(title: "Uo Mike", done: true),
-        TableCell(title: "Suop"),
-        TableCell(title: "Find Mike"),
-        TableCell(title: "Check"),
-        TableCell(title: "Uo Mike", done: true),
-        TableCell(title: "Suop")
-    ]
+    var itemArray = [TableCell]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        if let items = defaults.array(forKey: "TodoListArray") as? [String] {
-//            itemArray = items
-//        }
+        loadItems()
         // Do any additional setup after loading the view.
     }
     
@@ -65,7 +37,7 @@ class TodoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
-        tableView.reloadData()
+        saveItems()
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -79,8 +51,8 @@ class TodoListViewController: UITableViewController {
             if let safeText = tfInput.text {
                 let newItem = TableCell(title: safeText)
                 self.itemArray.append(newItem)
-                self.defaults.set(self.itemArray, forKey: "TodoListArray")
-                self.tableView.reloadData()
+                
+                self.saveItems()
             }
         }
         alert.addTextField { (alertTextField) in
@@ -90,6 +62,30 @@ class TodoListViewController: UITableViewController {
         
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+    }
+    
+    
+    func saveItems() {
+        let encoder = PropertyListEncoder()
+        do{
+            let data = try encoder.encode(itemArray)
+            try data.write(to: dataFilePath!)
+        }catch{
+            print(error)
+        }
+        
+        tableView.reloadData()
+    }
+    
+    func loadItems() {
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do{
+                itemArray = try decoder.decode([TableCell].self, from: data)
+            }catch{
+                print(error)
+            }
+        }
     }
 }
 

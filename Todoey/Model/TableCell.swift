@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TableCell {
+struct TableCell: Codable {
     var title: String = ""
     var done: Bool = false
 }
