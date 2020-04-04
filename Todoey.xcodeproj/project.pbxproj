@@ -14,6 +14,7 @@
 		E7E40B6B24369E2000846FE1 /* Todoey.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7E40B6924369E2000846FE1 /* Todoey.xcdatamodeld */; };
 		E7E40B6D24369E2100846FE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7E40B6C24369E2100846FE1 /* Assets.xcassets */; };
 		E7E40B7024369E2100846FE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7E40B6E24369E2100846FE1 /* LaunchScreen.storyboard */; };
+		E7E40B832438157F00846FE1 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E40B822438157F00846FE1 /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E7E40B6C24369E2100846FE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7E40B6F24369E2100846FE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7E40B7124369E2100846FE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7E40B822438157F00846FE1 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		E7E40B7B2437D44E00846FE1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E7E40B822438157F00846FE1 /* CategoryViewController.swift */,
 				E7E40B6424369E2000846FE1 /* TodoListViewController.swift */,
 			);
 			path = Controller;
@@ -173,6 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7E40B832438157F00846FE1 /* CategoryViewController.swift in Sources */,
 				E7E40B6524369E2000846FE1 /* TodoListViewController.swift in Sources */,
 				E7E40B6124369E2000846FE1 /* AppDelegate.swift in Sources */,
 				E7E40B6324369E2000846FE1 /* SceneDelegate.swift in Sources */,
